@@ -32,11 +32,6 @@ class UserModel
 				$_SESSION['username'] = $row['username'];
 				exit;
 			} else{
-				echo $password;
-				echo password_hash($password, PASSWORD_DEFAULT);
-				echo $row['password'];
-				$test = password_verify($password, '$2y$10$DyeHJSE4AsTCBDktf8');
-				echo $test;
 				echo "Credenciales incorrectas, intentelo de nuevo";
 			}
 		} else {
