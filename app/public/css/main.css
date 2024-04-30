@@ -1,0 +1,109 @@
+/* Variables CSS */
+
+:root {
+
+	/* Colores */
+	--mainColor: #89ABD9;
+	--secundaryColor: #1C4D8C;
+	--warningColor: #730202;
+	--endasisColor: #04BF55;
+
+	/* Fuentes */
+	--titlesFont: "Lexend Deca", sans-serif;
+	--mainFont: "Lato", sans-serif;
+}
+
+/* Estilos generales */
+
+* {
+	margin:0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: var(--mainFont);
+}
+
+.titles {
+	font-family: var(--titlesFont);
+	font-weight: bold;
+}
+
+.links {
+	color: var(--secundaryColor);
+	text-decoration: none;
+}
+
+header {
+	background-color: var(--secundaryColor);
+	color: #fff;
+	padding: 20px 50px;
+}
+
+article {
+	padding: 30px 50px;
+	
+	height: calc(100vh - 80px);
+}
+
+article p{
+	margin-top: 20px;
+}
+
+.formContainer {
+	padding: 30px 20px;
+	display: grid;
+	grid-template-columns: 1fr 40%;
+	gap: 20px;
+}
+
+.imgContainer {
+	width: 100%;
+}
+
+.imgContainer img {
+	max-width: 100%;
+	width: 100%;
+}
+
+form {
+	padding: 30px 10% 10px 10%;
+	background-color: var(--mainColor);
+	border-radius: 50px;
+}
+
+form h3 {
+	color: #fff;
+	text-align: center;
+	font-size: 2rem;
+}
+
+form div, p {
+	margin: 30px 0px;
+}
+
+form input {
+	display: block;
+	width: 100%;
+	margin: 5px 0px 10px 0px;
+	padding: 10px 20px;
+	border: none;
+	outline: none;
+	border-radius: 50px;
+}
+
+form label {
+	margin: 0px 15px;
+	font-weight: 500;
+}
+
+input[type=submit] {
+	display: block;
+	width: 15rem;
+	padding: 10px 30px;
+	margin: 20px auto;
+	background: var(--secundaryColor);
+	text-align: center;
+	font-size: 1.12rem;
+	color: #fff;
+	border: none;
+	border-radius: 20px;
+}

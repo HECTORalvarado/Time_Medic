@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Login</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lexend+Deca:wght@100..900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="./css/main.css">
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+</head>
+<body>
+	<div class="formContainer">
+		<figure class="imgContainer">
+			<img src="./img/undraw_medicine_b-1-ol.svg" alt="doctor image">
+		</figure>
+		<form action="../controllers/login.php" method="post">
+			<h3 class="titles">Iniciar Session</h3>
+			<div>
+				<label for="email">Corrreo electronico</label>
+				<input type="email" name="email" id="email" placeholder="email@example.com">
+			</div>
+			<div>
+				<label for="password">Contraseña</label>
+				<input type="password" name="password" id="password" placeholder="* * * * * * * *">
+			</div>
+			<p>¿No tienes cuenta? ¡Registarte <a href="./register.html" class="links">aquí</a>!</p>
+			<input type="submit" value="Iniciar session">
+		</form>
+	</div>
+</body>
+</html>
