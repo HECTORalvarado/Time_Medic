@@ -57,9 +57,11 @@ class UserModel
 		}
 	}
 
-	public function getUserInfo ()
+	public function getUserInfo ($username)
 	{
-		$username = $_SESSION['username'];
+		if ($username == null){
+			$username = $_SESSION['username'];
+		}
 		$query = "SELECT * FROM usuario WHERE username = '$username'";
 		$results = mysqli_query($this->db, $query);
 		if (mysqli_num_rows($results) > 0) {
@@ -67,5 +69,8 @@ class UserModel
 			return $user;
 		}
 	}
-
+	public function editUser($nombre, $apellido, $correo, $username, $password, $img){
+		$query = "";
+		$results = mysqli_query($this->db, $query);
+	}
 }
