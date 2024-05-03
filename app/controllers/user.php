@@ -29,7 +29,10 @@ class userController {
     }
 
 	public function getUserInfor() {
-		return $this->userModel->getUserInfo();
+		return $this->userModel->getUserInfo(null);
+	}
+	public function getUserInforByUsername($username) {
+		return $this->userModel->getUserInfo($username);
 	}
 }
 
