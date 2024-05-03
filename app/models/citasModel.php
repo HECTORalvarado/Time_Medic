@@ -11,9 +11,8 @@ class citasModel {
 	public function getCitas() {
 		$citas = array();
 		$username = $_SESSION['username'];
-		$query = "SELECT c.fecha_cita, c.hora_cita, c.estado, concat(d.nombre + ' ' + d.apellido) as doctor FROM citas c  WHERE username = '$username'
-		inner join usuario d
-		on id_doctor = d.idusuario";
+		$query = "SELECT c.fecha_cita, c.hora_cita, c.estado, concat(d.nombre + ' ' + d.apellido) as doctor FROM citas c
+		inner join usuario d on id_doctor = d.idusuario WHERE username = '$username'";
 		$results = mysqli_query($this->db, $query);
 		if (mysqli_num_rows($results) > 0) {
 			while($data = mysqli_fetch_assoc($results)) {
