@@ -25,6 +25,22 @@ class citasModel {
 	}
 
 
+	public function addCitas($username, $doc, $fecha, $hora) {
+		require_once '../controllers/user.php';
+		$userCtrl = new userController();
+		$Paciente = $userCtrl->getUserInforByUsername($username);
+		$Doctor = $userCtrl->getUserInforByUsername($doc);
+		$idPaciente = $Paciente['idusuario'];
+		$idDoctor = $Doctor['idusuario'];
+		$query = "INSERT INTO citas (id_paciente, id_doctor, fecha_cita, hora_cita, estado) VALUES ($idPaciente, $idDoctor, $fecha, $hora, 0)";
+		$results = mysqli_query($this->db, $query);
+	}
+
+	public function editCita($id, $action) {
+		$query = "UPDATE citas SET estado = $action WHERE idcitas = $id";
+		$results = mysqli_query($this->db, $query);
+	}
+
 }
 
 ?>
