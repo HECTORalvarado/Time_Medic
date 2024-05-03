@@ -15,7 +15,22 @@ class AuthController {
 		$hashedPass = password_hash($password, PASSWORD_DEFAULT);
 		$this->userModel->registerUser($username, $correo,$hashedPass,$nombre,$apellido,1);
 	}
+	public function addUser ($username, $correo, $password, $nombre, $apellido, $role) {
+		$hashedPass = password_hash($password, PASSWORD_DEFAULT);
+		$this->userModel->registerUser($username, $correo,$hashedPass,$nombre,$apellido,$role);
+	}
+}
 
+class userController {
+	private $userModel;
+	public function __construct() {
+		require_once '../../config/conn.php';
+        $this->userModel = new UserModel($conn);
+    }
+
+	public function getUserInfor() {
+		return $this->userModel->getUserInfo();
+	}
 }
 
 ?>
