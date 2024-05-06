@@ -1,5 +1,13 @@
 <?php
-	session_start();
+session_start();
+
+if (!isset($_SESSION['username'])) {
+	header("Location: index.html");
+}
+
+if ($_SESSION['role'] != 1) {
+	header("Location: index.html");
+}
 ?>
 
 <!DOCTYPE html>
@@ -31,23 +39,37 @@
 			<?php
 			$citasController = new citasController();
 			$citas = $citasController->getCitasPaciente();
-			foreach ($citas as $cita) {
-			?>
-				<tr>
-					<td>
-						<?php echo $cita['fecha_cita'] ?>
-					</td>
-					<td>
-						<?php echo $cita['hora_cita'] ?>
-					</td>
-					<td>
-						<?php echo $cita['doctor'] ?>
-					</td>
-					<td>
-						<?php echo $cita['estado'] ?>
-					</td>
-				</tr>
-			<?php } ?>
+			if (!is_null($citas) && is_array($citas)) {
+				foreach ($citas as $cita) {
+					echo "
+					<tr>
+						<td>
+							 ", $cita['fecha_cita'], "
+						</td>
+						<td>
+							", $cita['hora_cita'], "
+						</td>
+						<td>
+							
+							", $cita['nombre'], ' ', $cita['apellido'], "
+							
+						</td>
+						<td>";
+
+					if ($cita['estado'] == 0) {
+						echo 'pendiente';
+					} else if ($cita['estado'] == 1) {
+						echo 'realizada';
+					} else {
+						echo 'cancelada';
+					}
+					echo "
+						</td>
+					</tr>";
+				}
+			} else {
+				print("The given variable is not an array and contains a null value.");
+			} ?>
 		</table>
 	</main>
 </body>

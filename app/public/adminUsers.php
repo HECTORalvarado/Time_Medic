@@ -44,37 +44,37 @@ if ($_SESSION['role'] != 3) {
 			$users = $userCtrl->getAllUsers();
 			if (!is_null($users) && is_array($users)) {
 				foreach ($users as $user) {
-					?>
+					echo "
 						<tr>
 							<td>
-								<?php echo $user['idusuario']; ?>
+								", $user['idusuario'], "
 							</td>
 							<td>
-								<?php echo $user['nombre']; ?>
+								", $user['nombre'], "
 							</td>
 							<td>
-								<?php echo $user['apellido']; ?>
+								", $user['apellido'], "
 							</td>
 							<td>
-								<?php echo $user['correo'] ?>
+								", $user['correo'], "
 							</td>
 							<td>
-								<?php echo $user['username']; ?>
+								", $user['username'], "
 							</td>
 							<td>
-								<?php echo $user['role']; ?>
+								", $user['role'], "
 							</td>
-							<td>
-								<?php
+							<td>";
+								
 								if ($user['estado'] == 1) {
 									echo 'activo';
 								} else {
 									echo 'inactivo';
 								}
-								?>
+								echo"
 							</td>
-						</tr>
-					<?php }
+						</tr>";
+					 }
 			} else {
 				print("The given variable is not an array and contains a null value.");
 			}
