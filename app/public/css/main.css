@@ -1,4 +1,5 @@
 /* Variables CSS */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lexend+Deca:wght@100..900&display=swap');
 
 :root {
 
@@ -239,4 +240,25 @@ main {
 
 .btnPencil {
 	color: var(--secundaryColor);
+}
+
+.dasboardGrid3 {
+	display: flex;
+	justify-content: space-around;
+	margin-top: 30px;
+}
+
+.dasboardCard{
+	padding-bottom: 20px;
+	background-color: #fff;
+	text-align: center;
+	border-radius: 20px;
+}
+
+.dasboardCardImg {
+	padding: 40px;
+	margin-bottom: 30px;	
+	background-color: var(--mainColor);
+	color: #fff;
+	border-radius: 20px 20px 0px 0px;
 }
