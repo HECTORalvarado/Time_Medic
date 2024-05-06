@@ -1,3 +1,16 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['username'])) {
+	header("Location: index.html");
+}
+
+if ($_SESSION['role'] != 3) {
+	header("Location: index.html");
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +57,7 @@
 					<option value="3">Administrador</option>
 				</select>
 			</div>
-			<input type="submit" value="Registrarse">
+			<input type="submit" value="Agregar Usuario">
 		</form>
 	</div>
 </body>
