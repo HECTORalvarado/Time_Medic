@@ -31,7 +31,7 @@ class UserModel
 				// Inicio de sesión válido
 				$_SESSION['username'] = $row['username'];
 				$_SESSION['role'] = $row['role'];
-				exit;
+				
 			} else{
 				echo "Credenciales incorrectas, intentelo de nuevo";
 			}
@@ -48,7 +48,6 @@ class UserModel
 			$results = mysqli_query($this->db, $query);
 			$_SESSION['username'] = $username;
 			$_SESSION['role'] = $role;
-			exit;
 		} else {
 			?>
 				<p>El usuario ya existe pruebe un usuario diferente</p>
@@ -72,5 +71,36 @@ class UserModel
 	public function editUser($nombre, $apellido, $correo, $username, $password, $img){
 		$query = "";
 		$results = mysqli_query($this->db, $query);
+	}
+
+	public function getAllUsers ()
+	{
+		$users = array();
+		$query = "select * from usuario";
+		$results = mysqli_query($this->db, $query);
+		if (mysqli_num_rows($results) > 0) {
+			while($data = mysqli_fetch_assoc($results)) {
+				$users[] = $data;
+			}
+		} else {
+			$users[0] = 'nothing is hea';
+		}
+		return $users;
+	}
+	public function getCountPacients(){
+		$query = "select count(*) as nPacientes from usuario where role =1";
+		$results = mysqli_query($this->db, $query);
+		if (mysqli_num_rows($results) > 0) {
+			$totalPacientes = mysqli_fetch_assoc($results);
+			return $totalPacientes;
+		}
+	}
+	public function getCountDoctors(){
+		$query = "select count(*) as nDoctores from usuario where role =2";
+		$results = mysqli_query($this->db, $query);
+		if (mysqli_num_rows($results) > 0) {
+			$totalDoctores = mysqli_fetch_assoc($results);
+			return $totalDoctores;
+		}
 	}
 }
