@@ -16,7 +16,7 @@ require_once '../controllers/user.php';
 
 <?php
 require_once './views/menu.php';
-$userCtrl = new userController();
+$userCtrl = new UserController();
 $user = $userCtrl->getUserInfor();
 ?>
 
