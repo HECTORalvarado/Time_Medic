@@ -1,5 +1,10 @@
 <?php
 require_once '../controllers/user.php';
+
+if (!isset($_SESSION['username'])) {
+	header("Location: index.html");
+}
+
 ?>
 
 <!DOCTYPE html>
