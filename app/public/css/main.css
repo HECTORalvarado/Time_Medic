@@ -7,7 +7,7 @@
 	--mainColor: #89ABD9;
 	--secundaryColor: #1C4D8C;
 	--warningColor: #730202;
-	--endasisColor: #04BF55;
+	--enfasisColor: #04BF55;
 
 	/* Fuentes */
 	--titlesFont: "Lexend Deca", sans-serif;
@@ -61,6 +61,7 @@ article p{
 }
 
 .imgContainer img {
+	max-height: calc(100vh - 150px);
 	max-width: 100%;
 	width: 100%;
 }
@@ -261,4 +262,94 @@ main {
 	background-color: var(--mainColor);
 	color: #fff;
 	border-radius: 20px 20px 0px 0px;
+}
+
+.btn-add {
+	display: flex;
+	justify-content: end;
+	margin-right: 10%;
+	margin-bottom: 15px;
+}
+
+.btn-add a {
+	display: flex;
+	height: 50px;
+	width: 50px;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
+	text-decoration: none;
+	background: var(--secundaryColor);
+	border-radius: 50%;
+	transition: all ease 0.3s;
+	&:hover {
+		transform: scale(1.1);
+	}
+}
+
+.btn-add a i {
+	color: #fff;
+}
+
+table {
+	width: 80%;
+	margin: auto;
+	border-collapse: collapse;
+}
+
+th {
+	background-color: var(--secundaryColor);
+	color: white;
+	font-family: var(--titlesFont);
+}
+
+tr {
+	border-bottom: 1px solid #333;
+}
+
+th, td {
+	padding: 10px;
+}
+
+th:last-child {
+	width: 200px;
+}
+
+tr:nth-child(even) {
+	background: var(--mainColor);
+}
+
+.formEdtContainer{
+	max-width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.formEdt {
+	background: none;
+}
+
+.formBtnDlt {
+	display: inline-block;
+	padding: 10px;
+	background: var(--warningColor);
+	color: #fff;
+	border: none;
+	transition: all 0.3s ease;
+	&:hover{
+		transform: scale(1.1);
+	}
+}
+
+.formBtnEdt {
+	display: inline-block;
+	padding: 10px;
+	background: var(--enfasisColor);
+	color: #fff;
+	border: none;
+	transition: all 0.3s ease;
+	&:hover{
+		transform: scale(1.1);
+	}
 }
