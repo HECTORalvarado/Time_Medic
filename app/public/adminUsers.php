@@ -28,7 +28,9 @@ if ($_SESSION['role'] != 3) {
 	require_once './views/menu.php';
 	?>
 	<main>
-		<a href="addUser.php" class="liniks"><i class="fa-solid fa-plus fa-2x"></i></a>
+		<div class="btn-add">
+			<a href="addUser.php" class="liniks"><i class="fa-solid fa-plus fa-2x"></i></a>
+		</div>
 		<table>
 			<tr>
 				<th>id</th>
