@@ -41,8 +41,9 @@
 	if ($_SESSION['role'] == 3) {
 		echo '
 				<a href="/app/public/dashboard.php" class="menuBtn">Dasboard</a>
-				<a href="/app/public/getCitas.php" class="menuBtn">Administrar Horarios</a>
-				<a href="/app/public/getCitas.php" class="menuBtn">Areas medicas</a>
+				<a href="/app/public/adminHorarios.php" class="menuBtn">Administrar Horarios</a>
+				<a href="/app/public/adminFechas.php" class="menuBtn">Administrar Fechas</a>
+				<a href="/app/public/specialities.php" class="menuBtn">Areas medicas</a>
 				<a href="/app/public/adminUsers.php" class="menuBtn">Administrar Usuarios</a>
 				';
 	}
