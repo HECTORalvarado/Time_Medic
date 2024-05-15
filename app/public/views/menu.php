@@ -29,7 +29,7 @@
 	if ($_SESSION['role'] == 1) {
 		echo '
 			<a href="/app/public/getCitas.php" class="menuBtn">Citas</a>
-			<a href="/app/public/pedirCitas.php" class="menuBtn">Solicitar Cita</a>
+			<a href="/app/public/addCita.php" class="menuBtn">Solicitar Cita</a>
 		';
 	}
 	if ($_SESSION['role'] == 2) {
