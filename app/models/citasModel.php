@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 class CitasModel
 {
@@ -12,14 +13,7 @@ class CitasModel
 	public function getCitas()
 	{
 		$citas = array();
-		$username = $_SESSION['username'];
-		$user = null;
-		$queryUser = "select * from usuario where username = '$username'";
-		$resultsUser = mysqli_query($this->db, $queryUser);
-		if (mysqli_num_rows($resultsUser) > 0) {
-			$user = mysqli_fetch_assoc($resultsUser);
-		}
-		$idUser = $user['idusuario'];
+		$idUser = $this->getIdUser();
 		$query = "select c.fecha_cita, c.hora_cita, c.estado, d.nombre, d.apellido from citas c
 		inner join usuario d on id_doctor = d.idusuario where id_paciente = '$idUser'";
 		$results = mysqli_query($this->db, $query);
@@ -63,9 +57,42 @@ class CitasModel
 		$results = mysqli_query($this->db, $query);
 	}
 
-	public function editCita($id, $action)
+	public function getCitasDoc()
 	{
-		$query = "UPDATE citas SET estado = $action WHERE idcitas = $id";
+		$citas = array();
+		$idUser = $this->getIdUser();
+		$query = "select c.idcitas, c.fecha_cita, c.hora_cita, c.estado, d.nombre, d.apellido from citas c
+		inner join usuario d on id_paciente = d.idusuario where id_doctor = '$idUser'";
 		$results = mysqli_query($this->db, $query);
+		if (mysqli_num_rows($results) > 0) {
+			while ($data = mysqli_fetch_assoc($results)) {
+				$citas[] = $data;
+			}
+		} else {
+			$citas = array();
+		}
+		return $citas;
+	}
+
+	public function completeCita ($idCita) {
+		$query = "UPDATE citas SET estado = 1 WHERE idcitas = $idCita";
+		$results = mysqli_query($this->db, $query);
+	}
+
+	public function cancelCita ($idCita) {
+		$query = "UPDATE citas SET estado = 2 WHERE idcitas = $idCita";
+		$results = mysqli_query($this->db, $query);
+	}
+
+	private function getIdUSer () {
+		$username = $_SESSION['username'];
+		$user = null;
+		$queryUser = "select * from usuario where username = '$username'";
+		$resultsUser = mysqli_query($this->db, $queryUser);
+		if (mysqli_num_rows($resultsUser) > 0) {
+			$user = mysqli_fetch_assoc($resultsUser);
+		}
+		$idUser = $user['idusuario'];
+		return $idUser;
 	}
 }
