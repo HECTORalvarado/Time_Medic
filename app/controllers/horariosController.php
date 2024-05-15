@@ -19,6 +19,16 @@ class HorariosController {
 		die();
 	}
 
+	public function getHorariosDoc() {
+		return $this->horariosModel->getHorariosDoc();
+	}
+	
+	public function addHorarioDoc ($id){
+		$this->horariosModel->addHorarioDoc($id);
+		header("Location: /app/public/adminHorariosDoc.php");
+		die();
+	}
+
 }
 
 ?>
