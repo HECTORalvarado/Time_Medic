@@ -52,3 +52,15 @@ function activateInput(inputNumber) {
 			break;
 	}
 }
+
+function showSpecialities (){
+	const select = document.getElementById('role');
+	const speciality = document.getElementById('especilidades');
+
+	if (select.value == 2) {
+		speciality.style.display = 'block';
+	} else {
+		speciality.style.display = 'none';	
+	}
+
+}

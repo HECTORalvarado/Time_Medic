@@ -1,5 +1,7 @@
 <?php
+require_once '../controllers/especialidadesController.php';
 session_start();
+$spcltCtrl = new SpecialitiesController();
 
 if (!isset($_SESSION['username'])) {
 	header("Location: index.html");
@@ -57,10 +59,21 @@ if ($_SESSION['role'] != 3) {
 				</div>
 				<div>
 					<label for="role">Rol</label>
-					<select name="role" id="role">
+					<select name="role" id="role" onchange=" showSpecialities()">
 						<option value="1">Paciente</option>
 						<option value="2">Doctor</option>
 						<option value="3">Administrador</option>
+					</select>
+				</div>
+				<div class="especilidadesForm" id="especilidades">
+					<label for="especialidad">Especialidad</label>
+					<select name="especialidad" id="especialidad">
+						<?php
+						$especialidades = $spcltCtrl->getEspecialidades();
+						foreach ($especialidades as $especialidad) {
+							echo '<option value="', $especialidad['id_especialidades'], '">', $especialidad['especialidad'], '</option>';
+						} ?>
+						
 					</select>
 				</div>
 				<input type="submit" value="Agregar Usuario">

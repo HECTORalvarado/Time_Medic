@@ -360,3 +360,7 @@ tr:nth-child(even) {
 		transform: scale(1.1);
 	}
 }
+
+.especilidadesForm {
+	display: none;
+}

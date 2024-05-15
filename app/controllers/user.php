@@ -25,7 +25,7 @@ class AuthController {
 
 	public function register($username, $correo, $password, $nombre, $apellido) {
 		$hashedPass = password_hash($password, PASSWORD_DEFAULT);
-		$this->userModel->registerUser($username, $correo,$hashedPass,$nombre,$apellido,1);
+		$this->userModel->registerUser($username, $correo,$hashedPass,$nombre,$apellido,1, null);
 		if ($_SESSION['role'] == 1) {
 			header("Location: /app/public/getCitas.php");
 			die();
@@ -39,9 +39,11 @@ class AuthController {
 			die();
 		}
 	}
-	public function addUser ($username, $correo, $password, $nombre, $apellido, $role) {
+	public function addUser ($username, $correo, $password, $nombre, $apellido, $role, $specialidad) {
 		$hashedPass = password_hash($password, PASSWORD_DEFAULT);
-		$this->userModel->registerUser($username, $correo,$hashedPass,$nombre,$apellido,$role);
+		$this->userModel->registerUser($username, $correo,$hashedPass,$nombre,$apellido,$role, $specialidad);
+		header("Location: /app/public/adminUsers.php");
+		die();
 	}
 }
 
