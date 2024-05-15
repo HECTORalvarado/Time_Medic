@@ -29,13 +29,14 @@
 	if ($_SESSION['role'] == 1) {
 		echo '
 			<a href="/app/public/getCitas.php" class="menuBtn">Citas</a>
-			<a href="/app/public/getCitas.php" class="menuBtn">Solicitar Cita</a>
+			<a href="/app/public/pedirCitas.php" class="menuBtn">Solicitar Cita</a>
 		';
 	}
 	if ($_SESSION['role'] == 2) {
 		echo '
-			<a href="/app/public/getCitas.php" class="menuBtn">Administrar Citas</a>
-			<a href="/app/public/getCitas.php" class="menuBtn">Administrar Horarios</a>
+			<a href="/app/public/adminCitas.php" class="menuBtn">Administrar Citas</a>
+			<a href="/app/public/adminFechasDoc.php" class="menuBtn">Administrar Fechas</a>
+			<a href="/app/public/adminHorariosDoc.php" class="menuBtn">Administrar Horarios</a>
 		';
 	}
 	if ($_SESSION['role'] == 3) {
