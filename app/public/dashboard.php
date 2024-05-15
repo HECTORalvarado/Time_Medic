@@ -18,6 +18,26 @@ if ($_SESSION['role'] != 3) {
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Dashboard</title>
+	<style>
+		menu {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			z-index: 40000000;
+		}
+		.menuOptions{
+			position: absolute;
+			top: 60;
+			left: 0;
+		}
+		main{
+			position: absolute;
+			top: 60;
+			left: 0;
+			width: 100%;
+		}
+	</style>
 	<link rel="stylesheet" href="./css/main.css">
 	<script src="./js/main.js"></script>
 	<script src="https://kit.fontawesome.com/783b8d7984.js" crossorigin="anonymous"></script>
