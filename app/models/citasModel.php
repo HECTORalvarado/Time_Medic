@@ -37,23 +37,10 @@ class CitasModel
 		}
 	}
 
-	public function addCitas($username, $doc, $fecha, $hora)
+	public function addCitas($doc, $fecha, $hora)
 	{
-		$paciente = null;
-		$doctor = null;
-		$queryPaciente = "select * from usuario where username = '$username'";
-		$queryDoctor = "select * from usuario where username = '$doc'";
-		$resultPaciente= mysqli_query($this->db, $queryPaciente);
-		if (mysqli_num_rows($resultPaciente) > 0) {
-			$paciente = mysqli_fetch_assoc($resultPaciente);
-		}
-		$resultDoc = mysqli_query($this->db, $queryDoctor);
-		if (mysqli_num_rows($resultDoc) > 0) {
-			$doctor = mysqli_fetch_assoc($resultDoc);
-		}
-		$idPaciente = $paciente['idusuario'];
-		$idDoctor = $doctor['idusuario'];
-		$query = "INSERT INTO citas (id_paciente, id_doctor, fecha_cita, hora_cita, estado) VALUES ($idPaciente, $idDoctor, $fecha, $hora, 0)";
+		$idPaciente = $this->getIdUSer();
+		$query = "INSERT INTO citas (id_paciente, id_doctor, fecha_cita, hora_cita, estado) VALUES ($idPaciente, $doc, '$fecha', '$hora', 0)";
 		$results = mysqli_query($this->db, $query);
 	}
 
@@ -94,5 +81,19 @@ class CitasModel
 		}
 		$idUser = $user['idusuario'];
 		return $idUser;
+	}
+
+	public function getAllDoctors(){
+		$doctors = array();
+		$query = "select idusuario, nombre, apellido from usuario where role =2";
+		$results = mysqli_query($this->db, $query);
+		if (mysqli_num_rows($results) > 0) {
+			while($data = mysqli_fetch_assoc($results)) {
+				$doctors[] = $data;
+			}
+		} else {
+			$doctors[0] = 'nothing is hea';
+		}
+		return $doctors;
 	}
 }
