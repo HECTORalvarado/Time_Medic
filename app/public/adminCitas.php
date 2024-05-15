@@ -61,11 +61,11 @@ if ($_SESSION['role'] != 2) {
 						echo 'pendiente';
 						echo '
 						<td class="formEdtContainer">
-							<form action="../controllers/completeCita.php" class="formEdt">
+							<form action="../controllers/completeCita.php" method="post" class="formEdt">
 								<input type="hidden" name="id" value=', $cita['idcitas'], ' >
 								<button type="submit" class="formBtnEdt">Realizada</button>
 							</form>
-							<form action="../controllers/cancelCita.php" class="formEdt">
+							<form action="../controllers/cancelCita.php" method="post" class="formEdt">
 								<input type="hidden" name="id" value=', $cita['idcitas'], '>
 								<button type="submit" class="formBtnDlt">Cancelar</button>
 							</form>

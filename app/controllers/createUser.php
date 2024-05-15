@@ -8,7 +8,7 @@ $userController = new AuthController($conn);
 // Verifica si se ha enviado un formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-	// Obtiene el username y el password del formulario
+	// Obtiene datos del formulario
 	$inputEmail = mysqli_real_escape_string($conn, $_POST["email"]);
 	$inputUsername = mysqli_real_escape_string($conn, $_POST["username"]);
 	$inputName = mysqli_real_escape_string($conn, $_POST["name"]);

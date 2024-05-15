@@ -3,17 +3,17 @@
 	require_once '../controllers/citasController.php';
 	
 	// Se crea un nuevo controllador
-	$fcitastrl = new CitasController();
+	$citasCtrl = new CitasController();
 	
 	// Verifica si se ha enviado un formulario
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		
-		// Obtiene el username y el password del formulario
+		// Obtiene datos del formulario
 		
 		$inputId = $_POST["id"];
 		
 		if (!empty($inputId)) {
-			$fcitastrl->completeCita($inputId);
+			$citasCtrl->completeCita($inputId);
 		} else {
 			echo "Formulario incompleto";
 		}
