@@ -4,7 +4,6 @@ require_once '../controllers/horariosController.php';
 
 $horariosCtrl = new HorariosController();
 
-session_start();
 
 if (!isset($_SESSION['username'])) {
 	header("Location: index.html");

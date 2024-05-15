@@ -4,7 +4,6 @@ require_once '../controllers/fechasController.php';
 
 $fechasCtrl = new FechasController();
 
-session_start();
 
 if (!isset($_SESSION['username'])) {
 	header("Location: index.html");
