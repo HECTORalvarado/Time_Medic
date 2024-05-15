@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once '../controllers/citasController.php';
 
 if (!isset($_SESSION['username'])) {
 	header("Location: index.html");
@@ -25,7 +25,6 @@ if ($_SESSION['role'] != 1) {
 
 <body>
 	<?php
-	require_once '../controllers/citasController.php';
 	require_once './views/menu.php';
 	?>
 	<main>
