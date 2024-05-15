@@ -15,6 +15,19 @@ class CitasController {
 	public function getCitasPaciente() {
 		return $this->citasModel->getCitas();
 	}
+	public function getCitasDoctor() {
+		return $this->citasModel->getCitasDoc();
+	}
+	public function cancelCita($id) {
+		$this->citasModel->completeCita($id);
+		header("Location: /app/public/adminCitas.php");
+		die();
+	}
+	public function completeCita ($id) {
+		$this->citasModel->cancelCita($id);
+		header("Location: /app/public/adminCitas.php");
+		die();
+	}
 }
 
 ?>
