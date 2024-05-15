@@ -312,7 +312,7 @@ th, td {
 }
 
 th:last-child {
-	width: 200px;
+	width: 250px;
 }
 
 tr:nth-child(even) {
@@ -339,6 +339,13 @@ tr:nth-child(even) {
 	transition: all 0.3s ease;
 	&:hover{
 		transform: scale(1.1);
+	}
+}
+
+.formBtnDlt:disabled, .formBtnEdt:disabled {
+	filter: opacity(65%);
+	&:hover{
+		transform: scale(1);
 	}
 }
 
