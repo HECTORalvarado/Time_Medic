@@ -19,6 +19,16 @@ class FechasController {
 		die();
 	}
 
+	public function getFechasDoc() {
+		return $this->horariosModel->getDatesDoc();
+	}
+
+	public function addFechaDoc ($id){
+		$this->horariosModel->addFechasDoc($id);
+		header("Location: /app/public/adminFechasDoc.php");
+		die();
+	}
+
 }
 
 ?>

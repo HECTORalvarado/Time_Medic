@@ -37,7 +37,7 @@ if ($_SESSION['role'] != 3) {
 			<form action="../controllers/addFecha.php" method="post">
 				<h3 class="titles">Agregar fecha</h3>
 				<div>
-					<label for="hInicio">Fecha Inicio</label>
+					<label for="fInicio">Fecha Inicio</label>
 					<select name="fInicio" id="fInicio">
 						<option value="Lunes">Lunes</option>
 						<option value="Martes">Martes</option>
@@ -50,7 +50,7 @@ if ($_SESSION['role'] != 3) {
 					</select>
 				</div>
 				<div>
-					<label for="hFin">Fecha Fin</label>
+					<label for="fFin">Fecha Fin</label>
 					<select name="fFin" id="fFin">
 						<option value="Lunes">Lunes</option>
 						<option value="Martes">Martes</option>
