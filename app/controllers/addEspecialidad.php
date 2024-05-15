@@ -1,5 +1,4 @@
 <?php
-	//require_once '../../config/conn.php';
 	require_once '../controllers/especialidadesController.php';
 	
 	// Se crea un nuevo controllador
@@ -8,7 +7,7 @@
 	// Verifica si se ha enviado un formulario
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		
-		// Obtiene el username y el password del formulario
+		// Obtiene datos del formulario
 		
 		$inputEspecialidad = $_POST["especialidad"];
 		$inputDescripcion = $_POST["descripcion"];
