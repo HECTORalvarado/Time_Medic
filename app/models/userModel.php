@@ -78,7 +78,21 @@ class UserModel
 	public function editUser($nombre, $apellido, $correo, $username, $password, $img)
 	{
 		$query = "";
+		if ($password == null) {
+			if ($img == null) {
+				$query = "UPDATE usuario SET nombre = '$nombre', apellido = '$apellido', correo= '$correo', username = '$username'";
+			} else {
+				$query = "UPDATE usuario SET nombre = '$nombre', apellido = '$apellido', correo= '$correo', username = '$username' img= '$img'";
+			}
+		} else {
+			if ($img == null) {
+				$query = "UPDATE usuario SET nombre = '$nombre', apellido = '$apellido', correo= '$correo', username = '$username', password = '$password'";
+			} else {
+				$query = "UPDATE usuario SET nombre = '$nombre', apellido = '$apellido', correo= '$correo', username = '$username', password = '$password', img= '$img'";
+			}
+		}
 		$results = mysqli_query($this->db, $query);
+		$_SESSION['username'] = $username;
 	}
 
 	public function getAllUsers()
@@ -112,5 +126,11 @@ class UserModel
 			$totalDoctores = mysqli_fetch_assoc($results);
 			return $totalDoctores;
 		}
+	}
+	public function deleteUser($id)
+	{
+		$query = "UPDATE usuario SET estado = 0 WHERE idusuario = $id";
+		$results = mysqli_query($this->db, $query);
+		session_destroy();
 	}
 }
