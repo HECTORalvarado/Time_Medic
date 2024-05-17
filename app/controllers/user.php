@@ -45,6 +45,28 @@ class AuthController {
 		header("Location: /app/public/adminUsers.php");
 		die();
 	}
+	
+	public function editUser ($username, $correo, $password, $nombre, $apellido, $img) {
+		$hashedPass = password_hash($password, PASSWORD_DEFAULT);
+		$this->userModel->editUser($nombre, $apellido, $correo, $username, $password, $img);
+		if ($_SESSION['role'] == 1) {
+			header("Location: /app/public/getCitas.php");
+			die();
+		}
+		if ($_SESSION['role'] == 2) {
+			header("Location: /app/public/adminCitas.php");
+			die();
+		}
+		if ($_SESSION['role'] == 3) {
+			header("Location: /app/public/dashboard.php");
+			die();
+		}		
+	}
+	public function deleteUser($id) {
+		$this->userModel->deleteUser($id);
+
+	}
+
 }
 
 class UserController {
