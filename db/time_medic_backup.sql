@@ -36,7 +36,7 @@ CREATE TABLE `citas` (
   KEY `doctor_citas_idx` (`id_doctor`),
   CONSTRAINT `doctor_citas` FOREIGN KEY (`id_doctor`) REFERENCES `usuario` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `paciente_citas` FOREIGN KEY (`id_paciente`) REFERENCES `usuario` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,6 +45,7 @@ CREATE TABLE `citas` (
 
 LOCK TABLES `citas` WRITE;
 /*!40000 ALTER TABLE `citas` DISABLE KEYS */;
+INSERT INTO `citas` VALUES (1,1,2,'2024-05-04','17:19:03',1),(2,1,2,'2024-05-31','10:05:00',1),(3,1,4,'2024-05-31','01:56:00',2);
 /*!40000 ALTER TABLE `citas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -64,7 +65,7 @@ CREATE TABLE `doctor_especialidad` (
   KEY `especialidad_idx` (`id_especialidad`),
   CONSTRAINT `doctor` FOREIGN KEY (`id_doctor`) REFERENCES `usuario` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `especialidad` FOREIGN KEY (`id_especialidad`) REFERENCES `especialidades` (`id_especialidades`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -73,6 +74,7 @@ CREATE TABLE `doctor_especialidad` (
 
 LOCK TABLES `doctor_especialidad` WRITE;
 /*!40000 ALTER TABLE `doctor_especialidad` DISABLE KEYS */;
+INSERT INTO `doctor_especialidad` VALUES (1,2,1),(2,4,1);
 /*!40000 ALTER TABLE `doctor_especialidad` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,9 +92,9 @@ CREATE TABLE `doctor_fechas` (
   PRIMARY KEY (`id_doctor_fechas`),
   KEY `id_doc_idx` (`id_doctor`),
   KEY `id_fechas_idx` (`id_fechas`),
-  CONSTRAINT `id_doc` FOREIGN KEY (`id_doctor`) REFERENCES `usuario` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `id_fechas` FOREIGN KEY (`id_fechas`) REFERENCES `fechas` (`idfechas`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  CONSTRAINT `id_doc` FOREIGN KEY (`id_doctor`) REFERENCES `usuario` (`idusuario`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `id_fechas` FOREIGN KEY (`id_fechas`) REFERENCES `fechas` (`idfechas`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -101,6 +103,7 @@ CREATE TABLE `doctor_fechas` (
 
 LOCK TABLES `doctor_fechas` WRITE;
 /*!40000 ALTER TABLE `doctor_fechas` DISABLE KEYS */;
+INSERT INTO `doctor_fechas` VALUES (1,2,2),(2,4,3);
 /*!40000 ALTER TABLE `doctor_fechas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -120,7 +123,7 @@ CREATE TABLE `doctor_horario` (
   KEY `horario_idx` (`id_horario`),
   CONSTRAINT `doct` FOREIGN KEY (`id_doctor`) REFERENCES `usuario` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `horario` FOREIGN KEY (`id_horario`) REFERENCES `horarios` (`id_horarios`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -129,6 +132,7 @@ CREATE TABLE `doctor_horario` (
 
 LOCK TABLES `doctor_horario` WRITE;
 /*!40000 ALTER TABLE `doctor_horario` DISABLE KEYS */;
+INSERT INTO `doctor_horario` VALUES (1,2,1),(2,4,1);
 /*!40000 ALTER TABLE `doctor_horario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -144,7 +148,7 @@ CREATE TABLE `especialidades` (
   `especialidad` varchar(40) DEFAULT NULL,
   `descripcion` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_especialidades`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -153,6 +157,7 @@ CREATE TABLE `especialidades` (
 
 LOCK TABLES `especialidades` WRITE;
 /*!40000 ALTER TABLE `especialidades` DISABLE KEYS */;
+INSERT INTO `especialidades` VALUES (1,'Medicina Interna','La medicina interna se ocupa del diagnóstico y tratamiento de enfermedades en adultos.'),(2,'Pediatría','La pediatría se enfoca en la atención médica de niños y adolescentes.'),(3,'Cirugía General','La cirugía general aborda intervenciones quirúrgicas comunes, como apendicectomías y colecistectomías.'),(4,'Ginecología y Obstetricia','La ginecología y obstetricia se centra en la salud reproductiva de las mujeres, incluyendo el embarazo y el parto.'),(5,'Dermatología','La dermatología se dedica al diagnóstico y tratamiento de enfermedades de la piel, cabello y uñas.'),(6,'Ortopedia','Trata las lesiones y trastornos del sistema musculoesquelético, incluyendo huesos, articulaciones, ligamentos y músculos.');
 /*!40000 ALTER TABLE `especialidades` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -165,9 +170,10 @@ DROP TABLE IF EXISTS `fechas`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `fechas` (
   `idfechas` int(11) NOT NULL AUTO_INCREMENT,
-  `fechas_disponibles` varchar(95) NOT NULL,
+  `fecha_inicio` varchar(45) NOT NULL,
+  `fecha_fin` varchar(45) NOT NULL,
   PRIMARY KEY (`idfechas`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -176,6 +182,7 @@ CREATE TABLE `fechas` (
 
 LOCK TABLES `fechas` WRITE;
 /*!40000 ALTER TABLE `fechas` DISABLE KEYS */;
+INSERT INTO `fechas` VALUES (1,'Lunes','Lunes'),(2,'Lunes','Viernes'),(3,'Sábado','Domingo');
 /*!40000 ALTER TABLE `fechas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -191,7 +198,7 @@ CREATE TABLE `horarios` (
   `hora_inicio` time NOT NULL,
   `hora_fin` time NOT NULL,
   PRIMARY KEY (`id_horarios`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -200,6 +207,7 @@ CREATE TABLE `horarios` (
 
 LOCK TABLES `horarios` WRITE;
 /*!40000 ALTER TABLE `horarios` DISABLE KEYS */;
+INSERT INTO `horarios` VALUES (1,'06:00:00','16:20:00');
 /*!40000 ALTER TABLE `horarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -241,12 +249,12 @@ CREATE TABLE `usuario` (
   `correo` varchar(155) NOT NULL,
   `role` tinyint(4) NOT NULL DEFAULT 1,
   `username` varchar(255) NOT NULL,
-  `password` varchar(25) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `estado` bit(1) DEFAULT b'1',
   `img` mediumblob DEFAULT NULL,
   PRIMARY KEY (`idusuario`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -255,7 +263,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'admin','admin','admin@admin.com',3,'adminpro777','admin',_binary '',NULL);
+INSERT INTO `usuario` VALUES (1,'test','Proba','test@mail.com',1,'test1','$2y$10$R8G6ckS.FGGiNjaCsnj3xuBU5rBI/WU9cTi6d9rLnVX42uvWRmNLm',_binary '',NULL),(2,'doctor','lyne','mail@mail.com',2,'doct1','$2y$10$UIOOUCLJuMYHDFlY3mLw5.6YCy08maxLhLB20X7V8nGPZDel6qD.C',_binary '',NULL),(3,'admin','administrador','admin@admin.com',3,'admin1','$2y$10$54SaWxhIlBkUc0bxAFV9FOPlWQvSFlCcJv1.5fMY3bZof5fisqlPq',_binary '',NULL),(4,' Heinz','Doofenshmirtz','test@test.com',2,'doc2','$2y$10$HO13A3SuwCSVBQYdOKev4ueVCV2wHcziAi8FZZqZlpWXJM7Kx3hge',_binary '',NULL);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -268,4 +276,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-23 16:21:35
+-- Dump completed on 2024-05-16 20:39:47
