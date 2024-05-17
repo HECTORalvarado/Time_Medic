@@ -31,21 +31,47 @@ function changeImg() {
 }
 
 function activateInput(inputNumber) {
+	// obtencion de los inputs
+	const name = document.getElementById('name');
+	const lastname = document.getElementById('lastname');
+	const username = document.getElementById('username');
+	const email = document.getElementById('email');
+	const password = document.getElementById('password');
 	switch (inputNumber) {
 		case 1:
-
+			name.disabled = false;
+			lastname.disabled = true;
+			username.disabled = true;
+			email.disabled = true;
+			password.disabled = true;
 			break;
 		case 2:
-
+			name.disabled = true;
+			lastname.disabled = false;
+			username.disabled = true;
+			email.disabled = true;
+			password.disabled = true;
 			break;
 		case 3:
-
+			name.disabled = true;
+			lastname.disabled = true;
+			username.disabled = false;
+			email.disabled = true;
+			password.disabled = true;
 			break;
 		case 4:
-
+			name.disabled = true;
+			lastname.disabled = true;
+			username.disabled = true;
+			email.disabled = false;
+			password.disabled = true;
 			break;
 		case 5:
-
+			name.disabled = true;
+			lastname.disabled = true;
+			username.disabled = true;
+			email.disabled = true;
+			password.disabled = false;
 			break;
 
 		default:
