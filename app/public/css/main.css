@@ -66,6 +66,12 @@ article p{
 	width: 100%;
 }
 
+.imgMenuProfile img {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+}
+
 form {
 	padding: 30px 10% 10px 10%;
 	background-color: var(--mainColor);
@@ -219,10 +225,17 @@ main {
 .lblImg {
 	display: flex;
 	justify-content: right;
+	margin-right: 50%;
 }
 
 .imgAdminProfile {
-	max-width: 50%;
+	max-width: 100%;
+}
+
+.imgAdminProfile img {
+	width: 19rem;
+	height: 19rem;
+	border-radius: 50%;
 }
 
 #img, #previewImgPP {
@@ -241,6 +254,36 @@ main {
 
 .btnPencil {
 	color: var(--secundaryColor);
+}
+
+.btnInput{
+	background: none;
+	border: none;
+}
+
+.grid2Input {
+	display: grid;
+	grid-template-columns: 90% calc(10% - 10px);
+	gap: 10px;
+}
+
+.btnCancel {
+	width: 100%;
+	border: none;
+}
+
+.canceLink:hover, .btnPencil:hover, .btnProfile:hover{
+	cursor: pointer;
+}
+
+.btnProfile {
+	display: block;
+	width: 100%;
+	padding: 10px;
+	background: var(--secundaryColor);
+	color: #fff;
+	border: none;
+	border-radius: 10px;
 }
 
 .dasboardGrid3 {
